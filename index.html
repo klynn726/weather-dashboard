@@ -13,37 +13,40 @@
 
 <body>
   <!-- heading -->
-  <h2 class="heading container text-center p-3 mb-2 bg-secondary text-white">Weather Dashboard</h2>
-  <div class="container">
+  <h2 class="heading container-fluid text-center p-3 mb-2 bg-secondary text-white">Weather Dashboard</h2>
+  <div class="container-fluid">
     <div class="row">
-      <div class="search-hist bg-light text-dark col-4">
+      <div class="search-hist bg-light text-dark col-3">
         <!-- search bar -->
         <div class="search">
-          <p>Search for a city:</p>
+          <h5>Search for a city:</h5>
           <input id="cityInput" type="text" placeholder="Waxahachie...">
           <button id="btnSubmit" class="btn btn-primary" type="submit" value="Submit"><i
               class="fas fa-search"></i></button>
 
         </div>
-        <div id="hist" class="history card col-4" style="width: 18rem;">
+        <div id="hist" class="history card col-3">
           <!-- a list of previously searched items created dynamically -->
-          <ul class="list-group list-group-flush">
+          <ul id="historyList" class="list-group list-group-flush" style="width: 16rem;">
             <!-- list items go here -->
           </ul>
         </div>
       </div>
-      <div id="forecast" class="card col-8">
+      <div id="forecast" class="card col-9">
         <div id="wxNowHead" class="card-header col-12">
-          <h4 id="wxHeading"></h4>
+          <h3 id="wxHeading"></h3>
           <!-- dynamically created header for forecast information - current -->
         </div>
         <div id="wxNow" class="card-body col-12">
           <!-- dynamically created forecast information - current -->
         </div>
-        <div id="5DayForecast" class="col-12">
-          <h4>5-Day Forecast:</h4>
-          <!-- dynamically created cards for forecast information - future -->
-
+        <h3>5-Day Forecast:</h3>
+        <div id="5DayForecast" class="row">
+          <div id="card1" class="card w-20 p-3 mb-2 bg-primary text-white"></div>
+          <div id="card2" class="card w-20 p-3 mb-2 bg-primary text-white"></div>
+          <div id="card3" class="card w-20 p-3 mb-2 bg-primary text-white"></div>
+          <div id="card4" class="card w-20 p-3 mb-2 bg-primary text-white"></div>
+          <div id="card5" class="card w-20 p-3 mb-2 bg-primary text-white"></div>
         </div>
       </div>
     </div>
