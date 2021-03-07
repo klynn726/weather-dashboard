@@ -51,7 +51,7 @@ function searchInput() {
       var wxBody = document.getElementById("wxNow")
   
       var todayIcon = document.createElement("img");
-      todayIcon.setAttribute("src", "http://openweathermap.org/img/w/" + data.daily[0].weather.icon + ".png");
+      todayIcon.setAttribute("src", "http://openweathermap.org/img/w/" + data.daily[0].weather[0].icon + ".png");
 
       // temp
       var tempEl = document.createElement("p");
@@ -87,7 +87,7 @@ function searchInput() {
       addOne.innerHTML = moment().add(1, 'd').format('MM/DD/YYYY');
       addOne.className = "card-title";
 
-      //https://openweathermap.org/weather-conditions
+      //https://openweathermap.org/weather-conditions   how to write the icons to the page
 
       var iconOne = document.createElement("img");
       iconOne.setAttribute("src", "http://openweathermap.org/img/w/" + data.daily[1].weather[0].icon + ".png");
@@ -119,6 +119,7 @@ function searchInput() {
 
       addTwo.className = "card-title";
 
+      var iconTwo = document.createElement("img");
       iconTwo.setAttribute("src", "http://openweathermap.org/img/w/" + data.daily[2].weather[0].icon + ".png");
 
       var tempTwo = document.createElement("p");
@@ -147,6 +148,7 @@ function searchInput() {
 
       addThree.className = "card-title";
 
+      var iconThree = document.createElement("img");
       iconThree.setAttribute("src", "http://openweathermap.org/img/w/" + data.daily[3].weather[0].icon + ".png");
 
       var tempThree = document.createElement("p");
@@ -175,6 +177,7 @@ function searchInput() {
 
       addFour.className = "card-title";
 
+      var iconFour = document.createElement("img");
       iconFour.setAttribute("src", "http://openweathermap.org/img/w/" + data.daily[4].weather[0].icon + ".png");
 
       var tempFour = document.createElement("p");
@@ -205,6 +208,7 @@ function searchInput() {
 
       addFive.className = "card-title";
 
+      var iconFive = document.createElement("img");
       iconFive.setAttribute("src", "http://openweathermap.org/img/w/" + data.daily[5].weather[0].icon + ".png");
 
       var tempFive = document.createElement("p");
@@ -221,7 +225,9 @@ function searchInput() {
       dayFive.appendChild(iconFive);
       wxFive.appendChild(dayFive);
 
-  
+      //uv Index rating scale colors per wx channel: https://weather.com/science/weather-explainers/news/uv-index-sunburn-skin-dangers
+
+      
 
 
 
