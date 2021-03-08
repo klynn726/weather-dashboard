@@ -259,14 +259,14 @@ function searchInput() {
 
 }
 
-var historyList = document.querySelector('.histList');
+// var historyList = document.querySelector('.histList');
 
-historyList.onClick = function (event) {
-  event.preventDefault();
+// historyList.onClick = function (event) {
+//   event.preventDefault();
 
-  var newSearch = document.getElementById(uniqueId).value = localStorage.getItem(uniqueId);
-  console.log(newSearch)
-  searchInput(newSearch)
-}
+//   var newSearch = document.getElementById(uniqueId).value = localStorage.getItem(uniqueId);
+//   console.log(newSearch)
+//   searchInput(newSearch)
+// }
 
 document.getElementById('btnSubmit').addEventListener('click', searchInput);
