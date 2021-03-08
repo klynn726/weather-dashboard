@@ -3,13 +3,16 @@ function searchInput() {
   var cityName = document.getElementById('cityInput').value;
   // console.log(cityName);
 
-  //put that city into local storage
-  localStorage.setItem(cityName, cityName)
-
 //write that city on the left side
 //use bootstrap list group card  --  <li class="list-group-item">  https://getbootstrap.com/docs/4.0/components/card/
   var historyEl = document.createElement("li");
   historyEl.className = "list-group-item";
+
+  uniqueId = Math.floor(Math.random() * 145)
+  // console.log(uniqueId);
+
+  historyEl.setAttribute("id", uniqueId);
+
   historyEl.innerHTML = localStorage.getItem(cityName);
   document.getElementById("historyList").appendChild(historyEl);
 
@@ -18,6 +21,8 @@ function searchInput() {
   var now = moment().format('MM/DD/YYYY');
   document.getElementById('wxHeading').textContent = cityName + " " + "(" + now + ")";
 
+  //put that city into local storage
+  localStorage.setItem(uniqueId, cityName)
 
   //enter the city into the API
   //see activities 1 & 2 for guidance
@@ -65,11 +70,15 @@ function searchInput() {
       windEl.innerHTML = "Wind speed: " + data.daily[0].wind_speed + " MPH";
       // UV index
       var uvEl = document.createElement("p");
-      uvEl.innerHTML = "UV Index: " + data.daily[0].uvi;
+      uvEl.innerHTML = "UV Index: " 
+      
+      var uvButton = document.createElement("button");
+      uvButton.innerHTML = data.daily[0].uvi;
 
       wxBody.appendChild(tempEl);
       wxBody.appendChild(humidityEl);
       wxBody.appendChild(windEl);
+      uvEl.appendChild(uvButton);
       wxBody.appendChild(uvEl);
       wxBody.appendChild(todayIcon);
   
@@ -227,24 +236,37 @@ function searchInput() {
 
       //uv Index rating scale colors per wx channel: https://weather.com/science/weather-explainers/news/uv-index-sunburn-skin-dangers
 
-      
-
-
-
-
+      if (uvButton.value <= 2){
+        uvButton.className = "btn-success";
+      }
+      else if (2 < uvButton.value <= 5){
+        uvButton.className = "btn-primary";
+      }
+      else if (6<= uvButton.value < 8){
+        uvButton.className = "btn-warning";
+      }
+      else if (8<= uvButton.value < 11){
+        uvButton.className = "btn-danger";
+      }
+      else {
+        uvButton.className = "btn-dark";
+      }
   
   
     });
 
-
-
-
-
   })
-
-
 
 }
 
+var historyList = document.querySelector('.histList');
+
+historyList.onClick = function (event) {
+  event.preventDefault();
+
+  var newSearch = document.getElementById(uniqueId).value = localStorage.getItem(uniqueId);
+  console.log(newSearch)
+  searchInput(newSearch)
+}
 
 document.getElementById('btnSubmit').addEventListener('click', searchInput);
