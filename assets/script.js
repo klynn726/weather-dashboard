@@ -1,28 +1,36 @@
+// var historyArr = [];
+var cityName = "";
+  // console.log(cityName);
 // search for a city
 function searchInput() {
-  var cityName = document.getElementById('cityInput').value;
+ cityName = document.getElementById('cityInput').value;
   // console.log(cityName);
+search(cityName);
+}
+
+function search(cityName){
 
 //write that city on the left side
 //use bootstrap list group card  --  <li class="list-group-item">  https://getbootstrap.com/docs/4.0/components/card/
+ 
   var historyEl = document.createElement("li");
   historyEl.className = "list-group-item";
+  historyEl.textContent = cityName;
 
-  uniqueId = Math.floor(Math.random() * 145)
-  // console.log(uniqueId);
+  var histCont = document.querySelector('.histList');
+  histCont.appendChild(historyEl);
 
-  historyEl.setAttribute("id", uniqueId);
+  // historyArr.push(historyEl);
 
-  historyEl.innerHTML = localStorage.getItem(cityName);
-  document.getElementById("historyList").appendChild(historyEl);
+  //put that city into local storage
+  localStorage.setItem(cityName, cityName);
+
+
 
 
   document.getElementById('wxHeading').textContent = " ";
   var now = moment().format('MM/DD/YYYY');
   document.getElementById('wxHeading').textContent = cityName + " " + "(" + now + ")";
-
-  //put that city into local storage
-  localStorage.setItem(uniqueId, cityName)
 
   //enter the city into the API
   //see activities 1 & 2 for guidance
@@ -259,14 +267,15 @@ function searchInput() {
 
 }
 
-// var historyList = document.querySelector('.histList');
 
-// historyList.onClick = function (event) {
-//   event.preventDefault();
+var hist = document.querySelector('.histList');
 
-//   var newSearch = document.getElementById(uniqueId).value = localStorage.getItem(uniqueId);
-//   console.log(newSearch)
-//   searchInput(newSearch)
-// }
+hist.addEventListener('click', function(event){
+  // console.log(event.target)
+ event.preventDefault();
+ var histItem = event.target.textContent
+ console.log(histItem)
+ search(histItem);
+});
 
 document.getElementById('btnSubmit').addEventListener('click', searchInput);
