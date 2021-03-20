@@ -243,17 +243,19 @@ function search(cityName){
       wxFive.appendChild(dayFive);
 
       //uv Index rating scale colors per wx channel: https://weather.com/science/weather-explainers/news/uv-index-sunburn-skin-dangers
+      console.log(data.daily[0].uvi);
 
-      if (uvButton.value <= 2){
+      if (data.daily[0].uvi<= 2){
+       
         uvButton.className = "btn-success";
       }
-      else if (2 < uvButton.value <= 5){
+      else if (data.daily[0].uvi <= 6){
         uvButton.className = "btn-primary";
       }
-      else if (6<= uvButton.value < 8){
+      else if (data.daily[0].uvi < 8){
         uvButton.className = "btn-warning";
       }
-      else if (8<= uvButton.value < 11){
+      else if (data.daily[0].uvi < 11.00){
         uvButton.className = "btn-danger";
       }
       else {
